@@ -2,7 +2,7 @@
 
 body {
   font-family: "Roboto", sans-serif;
-  margin: 0;
+  margin: 5px 0;
   background-color: rgb(237, 238, 240);
 }
 
@@ -65,12 +65,33 @@ body {
 .circle {
   width: 10px;
   height: 10px;
-  background-color: white;
-  border: 1px solid black;
+  margin: 2px;
+  background-color: #aaa;
   border-radius: 100%;
+  opacity: 0.8;
+  transition: all ease 0.22s;
+}
+
+.circles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+}
+
+.active {
+  width: 13px;
+  height: 13px;
+  background-color: #000;
 }
 
 @media (max-width: 800px) {
+  body {
+    margin: 0;
+  }
+
   .container {
     width: 100%;
   }
