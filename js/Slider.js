@@ -1,12 +1,13 @@
 class Slider {
-  constructor(node) {
+  constructor(node, interval) {
     this.container = node;
+    this.interval = interval;
+    this.timer = setTimeout(this.switch.bind(this), this.interval);
     this.currentSlide = 0;
     this.images = this.container.querySelectorAll("img");
     this.imagesAmount = this.images.length;
 
     this.resize();
-    setInterval(this.switch.bind(this), 3000);
 
     this.circles = document.createElement("div");
     this.circles.classList.add("circles");
@@ -30,13 +31,17 @@ class Slider {
   }
 
   switch(toSlide) {
+    clearTimeout(this.timer);
     const prev = this.currentSlide++;
+
     if (this.currentSlide >= this.imagesAmount) {
       this.currentSlide = 0;
     }
+
     if (toSlide !== undefined) {
       this.currentSlide = toSlide;
     }
+
     this.circles
       .querySelectorAll(".circle")
       [this.currentSlide].classList.toggle("active");
@@ -45,5 +50,6 @@ class Slider {
     this.container.style = `transform: translateX(-${
       this.width * this.currentSlide
     }px)`;
+    this.timer = setTimeout(this.switch.bind(this), this.interval);
   }
 }
