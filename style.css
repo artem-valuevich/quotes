@@ -27,8 +27,8 @@ body {
   background-color: rgb(255, 233, 227);
 }
 
-#block2 img {
-  height: 300px;
+#block2 .slider {
+  width: 300px;
 }
 
 #block2 h2 {
@@ -37,9 +37,10 @@ body {
   margin: 30px 0;
 }
 
-#block2 > div {
-  padding: 20px 40px;
+#block2 .content {
+  padding: 0 40px;
   position: relative;
+  width: 45%;
 }
 
 #block2 .circles {
@@ -153,8 +154,11 @@ body {
     flex-direction: column-reverse;
   }
 
-  #block2 img {
-    height: auto;
+  #block2 .content {
+    width: auto;
+  }
+
+  #block2 .slider {
     width: 100%;
   }
 }
