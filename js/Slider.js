@@ -1,7 +1,7 @@
 class Slider {
   constructor({ node, interval, switchButton }) {
     this.container = node;
-    this.interval = interval;
+    this.interval = interval ?? 2000;
     this.timer = setTimeout(this.switch.bind(this), this.interval);
     this.currentSlide = 0;
     this.images = this.container.querySelectorAll("img");
@@ -9,20 +9,13 @@ class Slider {
 
     this.resize();
 
-    if (switchButton) {
+    if (!switchButton) {
+      this.circles = document.createElement("div");
+      this.circles.classList.add("circles");
+      node.insertAdjacentElement("afterend", this.circles);
+    } else {
       this.circles = switchButton;
-      for (let i = 0; i < this.imagesAmount; i++) {
-        const circle = document.createElement("div");
-        circle.classList.add("circle");
-        if (!i) circle.classList.add("active");
-        circle.addEventListener("click", this.switch.bind(this, i));
-        this.circles.insertAdjacentElement("beforeend", circle);
-      }
-      return;
     }
-
-    this.circles = document.createElement("div");
-    this.circles.classList.add("circles");
 
     for (let i = 0; i < this.imagesAmount; i++) {
       const circle = document.createElement("div");
@@ -31,8 +24,6 @@ class Slider {
       circle.addEventListener("click", this.switch.bind(this, i));
       this.circles.insertAdjacentElement("beforeend", circle);
     }
-
-    node.insertAdjacentElement("afterend", this.circles);
   }
 
   resize() {
