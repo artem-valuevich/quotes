@@ -6,6 +6,14 @@ body {
   background-color: rgb(237, 238, 240);
 }
 
+form {
+  margin-top: 1em;
+}
+
+input {
+  margin-bottom: 1em;
+}
+
 a[class="button"] {
   text-decoration: none;
   color: #000;
@@ -17,10 +25,31 @@ a[class="button"] {
 }
 
 .container {
+  position: relative;
   width: 800px;
   margin: auto;
   background-color: white;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+}
+
+.popup {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: white;
+  z-index: 10;
+  opacity: 1;
+}
+
+.isMobile {
+  position: fixed;
+  height: 100%;
+  overflow: scroll;
+}
+
+.no-overflow {
+  overflow: hidden;
 }
 
 #block1 {
@@ -80,11 +109,16 @@ a[class="button"] {
 
 #menu {
   position: absolute;
-  cursor: pointer;
+  z-index: 15;
   top: 20px;
   right: 35px;
   border-bottom: 3px solid white;
   border-top: 3px solid white;
+}
+
+.black {
+  border-color: #000 !important;
+  color: #000 !important;
 }
 
 #slider-text {
@@ -102,6 +136,10 @@ a[class="button"] {
 
 .reg-3em {
   font-size: 3em;
+}
+
+.bg-gray {
+  background-color: rgb(243, 244, 246);
 }
 
 .white-text {
@@ -215,6 +253,41 @@ a[class="button"] {
   padding: 10px 40px;
 }
 
+.menu {
+  padding: 60px 50px;
+  display: flex;
+  justify-content: space-between;
+  transition: opacity ease 0.22s;
+}
+
+.hidden {
+  z-index: 1;
+  user-select: none;
+  opacity: 0;
+}
+
+.folded {
+  padding: 0;
+  max-height: 0;
+}
+
+.menu a[class="button"] {
+  padding: 5px;
+}
+
+.menu > div {
+  max-width: 175px;
+}
+
+.menu ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+.menu li {
+  margin-bottom: 8px;
+}
+
 @media (max-width: 800px) {
   body {
     margin: 0;
@@ -251,5 +324,9 @@ a[class="button"] {
 
   #block4 {
     padding: 30px 20%;
+  }
+
+  .menu {
+    flex-direction: column;
   }
 }
